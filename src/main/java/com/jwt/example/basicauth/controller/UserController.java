@@ -8,20 +8,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/home")
 public class UserController {
     @Autowired
     private UserService userService;
-@GetMapping("/user")
+
+    @GetMapping("/users")
     public List<User> getUsers() {
         return userService.getUsers();
     }
+
     @GetMapping("/current-user")
     public String getLoggedUser(Principal principal) {
-    return principal.getName();
+        return principal.getName();
     }
 }
